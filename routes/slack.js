@@ -1,7 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
-require("dotenv").config(); // ✅ Load environment variables from .env
+require("dotenv").config();
 
 const SLACK_TOKEN = process.env.SLACK_BOT_TOKEN;
 const SLACK_API = "https://slack.com/api";
@@ -11,9 +11,9 @@ const headers = {
   "Content-Type": "application/json; charset=utf-8",
 };
 
-console.log("Slack Token Loaded:", SLACK_TOKEN); // should print xoxb-...
+console.log("Slack Token Loaded:", SLACK_TOKEN); 
 
-// 📤 Send a message
+
 router.post("/send", async (req, res) => {
   const { channel, text } = req.body;
   try {
@@ -28,7 +28,7 @@ router.post("/send", async (req, res) => {
   }
 });
 
-// 📅 Schedule a message
+
 router.post("/schedule", async (req, res) => {
   const { channel, text, post_at } = req.body;
   try {
@@ -43,7 +43,7 @@ router.post("/schedule", async (req, res) => {
   }
 });
 
-// 📥 Retrieve messages
+
 router.post("/retrieve", async (req, res) => {
   const { channel } = req.body;
   try {
@@ -57,7 +57,7 @@ router.post("/retrieve", async (req, res) => {
   }
 });
 
-// ✏️ Edit a message
+
 router.post("/edit", async (req, res) => {
   const { channel, ts, text } = req.body;
   try {
@@ -72,7 +72,7 @@ router.post("/edit", async (req, res) => {
   }
 });
 
-// ❌ Delete a message
+
 router.post("/delete", async (req, res) => {
   const { channel, ts } = req.body;
   try {
